@@ -1,5 +1,5 @@
 #!/bin/bash
-#set -euxo pipefail
+set -euxo pipefail
 
 ARCH=darwin  #  darwin | linux | windows
 

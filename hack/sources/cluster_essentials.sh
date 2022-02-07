@@ -1,5 +1,5 @@
 #!/bin/bash
-#set -euxo pipefail
+set -euxo pipefail
 
 echo ### INSTALLING CLUSTER ESSENTIALS ###
 rm -rf ./tanzu-cluster-essentials

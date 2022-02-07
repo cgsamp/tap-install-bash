@@ -1,5 +1,5 @@
 #!/bin/bash
-#set -euxo pipefail
+set -euxo pipefail
 
 echo ### UPDATING KUBECONFIG AND CONNECTING TO CLUSTER ###
 CONTEXT=$(kubectl config view --kubeconfig $KUBECONFIG_FILE -ojson | jq -r '.contexts[].name')

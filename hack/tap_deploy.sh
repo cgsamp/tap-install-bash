@@ -1,5 +1,5 @@
 #!/bin/bash
-#set -euxo pipefail
+set -euxo pipefail
 
 export KUBECONFIG_FILE="../secrets/csamp-user-aks.kubeconfig"
 export TAP_REGISTRY_VERSION=1.0.1-build.7

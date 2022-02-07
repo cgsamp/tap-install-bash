@@ -1,5 +1,5 @@
 #!/bin/bash
-#set -x
+set -euxo pipefail
 
 tanzu package install tap -p tap.tanzu.vmware.com -v $TAP_VERSION --values-file ../tap-values.yaml -n tap-install
 watch tanzu package installed list -n tap-install
