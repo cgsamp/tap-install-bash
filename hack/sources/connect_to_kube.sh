@@ -1,12 +1,16 @@
 #!/bin/bash
-set -euxo pipefail
+set -euo pipefail
 
 echo ### UPDATING KUBECONFIG AND CONNECTING TO CLUSTER ###
 CONTEXT=$(kubectl config view --kubeconfig $KUBECONFIG_FILE -ojson | jq -r '.contexts[].name')
 echo "Found $CONTEXT in $KUBECONFIG_FILE"
 
+if [ -v ${KUBECONFIG+x} ]; then 
+    KUBECONFIG=''; 
+fi
+
 OLD_KUBECONFIG=$KUBECONFIG
-if [ $OLD_KUBECONFIG == "" ]; then
+if [[ $OLD_KUBECONFIG == "" ]]; then
     OLD_KUBECONFIG=~/.kube/config;
 fi
 
@@ -26,4 +30,4 @@ if [ $K_APISERVER != "apiserver" ]; then
     kubectl get all
     exit 1;
 fi
-echo "Service/kubernetes verified in namespace default"
+echo "$(tput bold)Service/kubernetes verified UP in namespace default $(tput sgr0)"

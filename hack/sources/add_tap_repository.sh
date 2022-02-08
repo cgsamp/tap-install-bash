@@ -1,10 +1,10 @@
 #!/bin/bash
-#set -x
+set -euo pipefail
 
 export INSTALL_REGISTRY_HOSTNAME=registry.tanzu.vmware.com
 source ../secrets/tanzunet_credentials.sh
 
-kubectl create ns tap-install
+kubectl create ns tap-install || true
 
 tanzu secret registry add tap-registry \
   --username ${INSTALL_REGISTRY_USERNAME} --password ${INSTALL_REGISTRY_PASSWORD} \
@@ -16,3 +16,5 @@ tanzu package repository add tanzu-tap-repository \
   --namespace tap-install
 
 tanzu package available list --namespace tap-install
+
+echo "$(tput bold)Tanzu registry installed $(tput sgr0)"
