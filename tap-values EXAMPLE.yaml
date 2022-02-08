@@ -1,19 +1,19 @@
 profile: full
 ceip_policy_disclosed: true # Installation fails if this is set to 'false'
 buildservice:
-  kp_default_repository: "" # Your repository for TAP dependencies
-  kp_default_repository_username: "" # Fill
-  kp_default_repository_password: "" # Fill
-  tanzunet_username: "" # Fill
-  tanzunet_password: "" # Fill
+  kp_default_repository: "csamp.azurecr.io/azure-build"
+  kp_default_repository_username: "csamp"
+  kp_default_repository_password: "o2uzGQu3SZFuY714O489FF6=NyyY89y3"
+  tanzunet_username: "csamp@pivotal.io"
+  tanzunet_password: "S0fitel4$"
   descriptor_name: "tap-1.0.0-full"
   enable_automatic_dependency_updates: true
 supply_chain: basic
 
 ootb_supply_chain_basic:
   registry:
-    server: "" # Just the server name of your registry
-    repository: "" # Repository for storing application dependencies and build artifacts
+    server: "csamp.azurecr.io"
+    repository: "azure-dev"
   gitops:
     ssh_secret: ""
 
@@ -23,26 +23,26 @@ contour:
       type: LoadBalancer
 
 learningcenter:
-  ingressDomain: "" # Fill
+  ingressDomain: "learningcenter.tap.sampsoftware.io"
 
 cnrs:
-  domain_name: "" # Fill
+  domain_name: "apps.tap.sampsoftware.io"
 
-tap_gui: 
+tap_gui:
   service_type: ClusterIP
   ingressEnabled: "true"
-  ingressDomain: "" # Fill
+  ingressDomain: "tap.sampsoftware.io"
   app_config:
     app:
-      baseUrl: # Fill
+      baseUrl: http://tap-gui.tap.sampsoftware.io
     catalog:
       locations:
-        - type: url # This is pre-registration for the sample app; leave
+        - type: url
           target: https://github.com/sample-accelerators/tanzu-java-web-app/blob/main/catalog/catalog-info.yaml
     backend:
-      baseUrl: # Fill
+      baseUrl: http://tap-gui.tap.sampsoftware.io
       cors:
-        origin: # Fill
+        origin: http://tap-gui.tap.sampsoftware.io
 
 metadata_store:
   app_service_type: LoadBalancer # (optional) Defaults to LoadBalancer. Change to NodePort for distributions that don't support LoadBalancer
